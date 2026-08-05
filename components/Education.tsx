@@ -6,37 +6,30 @@ interface EducationProps {
 
 export default function Education({ education }: EducationProps) {
   return (
-    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-          Education
-        </h2>
-        <div className="max-w-4xl mx-auto space-y-8">
+    <section id="education" className="py-24 px-6 sm:px-10">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-14">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-soft text-accent text-sm font-semibold mb-4">
+            Education
+          </span>
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-ink">
+            Academic background
+          </h2>
+        </div>
+
+        <div className="flex flex-col gap-5">
           {education.map((edu) => (
-            <div
-              key={edu.id}
-              className="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                <div className="mb-4 md:mb-0">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                    {edu.degree}
-                  </h3>
-                  <p className="text-lg text-primary dark:text-accent font-semibold mb-1">
-                    {edu.institution}
-                  </p>
-                  {edu.location && (
-                    <p className="text-gray-600 dark:text-gray-400">
-                      {edu.location}
-                    </p>
-                  )}
-                </div>
-                {edu.start_date && edu.end_date && (
-                  <div className="text-gray-600 dark:text-gray-400 font-medium">
-                    {edu.start_date} - {edu.end_date}
-                  </div>
-                )}
+            <div key={edu.id} className="card p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div>
+                <h3 className="font-display text-lg font-bold text-ink mb-1">{edu.degree}</h3>
+                <p className="text-accent font-semibold">{edu.institution}</p>
+                {edu.location && <p className="text-ink-faint text-sm mt-0.5">{edu.location}</p>}
               </div>
+              {edu.start_date && edu.end_date && (
+                <span className="tabular font-mono text-xs px-3 py-1.5 rounded-full bg-bg-soft border border-line text-ink-faint whitespace-nowrap self-start sm:self-center">
+                  {edu.start_date} – {edu.end_date}
+                </span>
+              )}
             </div>
           ))}
         </div>

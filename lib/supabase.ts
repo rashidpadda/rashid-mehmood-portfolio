@@ -1,9 +1,20 @@
 import { createClient } from '@supabase/supabase-js';
+import {
+  fallbackProfile,
+  fallbackSkills,
+  fallbackExperience,
+  fallbackProjects,
+  fallbackEducation,
+} from './fallback-data';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Falls back to local resume data (lib/fallback-data.ts) when Supabase isn't
+// configured, so the site still renders for local dev without credentials.
+export const supabase = supabaseUrl && supabaseAnonKey
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;
 
 export interface Profile {
   id: string;
@@ -55,6 +66,8 @@ export interface Education {
 }
 
 export async function getProfile(): Promise<Profile | null> {
+  if (!supabase) return fallbackProfile;
+
   const { data, error } = await supabase
     .from('profile')
     .select('*')
@@ -62,13 +75,15 @@ export async function getProfile(): Promise<Profile | null> {
 
   if (error) {
     console.error('Error fetching profile:', error);
-    return null;
+    return fallbackProfile;
   }
 
-  return data;
+  return data ?? fallbackProfile;
 }
 
 export async function getSkills(): Promise<Skill[]> {
+  if (!supabase) return fallbackSkills;
+
   const { data, error } = await supabase
     .from('skills')
     .select('*')
@@ -76,13 +91,15 @@ export async function getSkills(): Promise<Skill[]> {
 
   if (error) {
     console.error('Error fetching skills:', error);
-    return [];
+    return fallbackSkills;
   }
 
-  return data || [];
+  return data && data.length > 0 ? data : fallbackSkills;
 }
 
 export async function getExperience(): Promise<Experience[]> {
+  if (!supabase) return fallbackExperience;
+
   const { data, error } = await supabase
     .from('experience')
     .select('*')
@@ -90,13 +107,15 @@ export async function getExperience(): Promise<Experience[]> {
 
   if (error) {
     console.error('Error fetching experience:', error);
-    return [];
+    return fallbackExperience;
   }
 
-  return data || [];
+  return data && data.length > 0 ? data : fallbackExperience;
 }
 
 export async function getProjects(): Promise<Project[]> {
+  if (!supabase) return fallbackProjects;
+
   const { data, error } = await supabase
     .from('projects')
     .select('*')
@@ -104,13 +123,15 @@ export async function getProjects(): Promise<Project[]> {
 
   if (error) {
     console.error('Error fetching projects:', error);
-    return [];
+    return fallbackProjects;
   }
 
-  return data || [];
+  return data && data.length > 0 ? data : fallbackProjects;
 }
 
 export async function getEducation(): Promise<Education[]> {
+  if (!supabase) return fallbackEducation;
+
   const { data, error } = await supabase
     .from('education')
     .select('*')
@@ -118,8 +139,8 @@ export async function getEducation(): Promise<Education[]> {
 
   if (error) {
     console.error('Error fetching education:', error);
-    return [];
+    return fallbackEducation;
   }
 
-  return data || [];
+  return data && data.length > 0 ? data : fallbackEducation;
 }

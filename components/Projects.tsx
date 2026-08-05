@@ -6,87 +6,59 @@ interface ProjectsProps {
 
 export default function Projects({ projects }: ProjectsProps) {
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
+    <section id="projects" className="py-24 px-6 sm:px-10">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-          Featured Projects
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="text-center mb-14">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-soft text-accent text-sm font-semibold mb-4">
+            Projects
+          </span>
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-ink">
+            Featured work
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <div
-              key={project.id}
-              className="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
-            >
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    {project.name}
-                  </h3>
+            <div key={project.id} className="card overflow-hidden">
+              <div className="h-1.5 bg-accent" />
+              <div className="p-7">
+                <div className="flex items-start justify-between gap-3 mb-2">
+                  <h3 className="font-display text-lg font-bold text-ink">{project.name}</h3>
                   {project.link && (
                     <a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary dark:text-accent hover:scale-110 transition-transform duration-200"
+                      className="w-8 h-8 rounded-full bg-bg-soft flex items-center justify-center text-ink-faint hover:text-accent transition-colors shrink-0"
                       aria-label="View project"
                     >
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
                   )}
                 </div>
 
-                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-                  {project.description}
-                </p>
+                <p className="text-ink-soft text-sm leading-relaxed mb-4">{project.description}</p>
 
                 {project.technologies && project.technologies.length > 0 && (
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="text-xs font-medium px-3 py-1 rounded-full bg-accent-soft text-accent"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 )}
 
                 {project.highlights && project.highlights.length > 0 && (
-                  <ul className="space-y-2">
+                  <ul className="bullet-list space-y-1.5">
                     {project.highlights.map((highlight, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start text-sm text-gray-600 dark:text-gray-400"
-                      >
-                        <svg
-                          className="w-4 h-4 text-primary dark:text-accent mr-2 mt-0.5 flex-shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                        <span className="leading-relaxed">{highlight}</span>
+                      <li key={idx} className="text-ink-soft text-[13.5px] leading-relaxed">
+                        {highlight}
                       </li>
                     ))}
                   </ul>

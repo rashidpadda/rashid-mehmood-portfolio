@@ -1,20 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Rashid Mehmood - Full Stack Software Developer",
-  description: "Full Stack Software Engineer with 6+ years of experience in web and blockchain applications. Expertise in React.js, Next.js, Node.js, NestJS, and Web3 technologies.",
+  title: "Rashid Mehmood - Senior Full Stack Software Engineer",
+  description: "Senior Full Stack Software Engineer with 6+ years of experience in web, mobile, and blockchain applications. Expertise in React.js, Next.js, React Native, Node.js, NestJS, Web3, and IT infrastructure.",
 };
 
 export default function RootLayout({
@@ -25,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} ${inter.variable} ${plexMono.variable} antialiased`}
       >
         {children}
       </body>

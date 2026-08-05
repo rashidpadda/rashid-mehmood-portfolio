@@ -26,8 +26,8 @@ export default async function Home() {
 
   if (!profile) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-xl text-gray-600 dark:text-gray-400">
+      <div className="min-h-screen flex items-center justify-center bg-bg">
+        <p className="text-xl text-ink-soft">
           Failed to load portfolio data
         </p>
       </div>
