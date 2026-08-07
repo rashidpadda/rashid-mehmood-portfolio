@@ -15,9 +15,11 @@ SET skills = ARRAY['Node.js', 'NestJS', 'Express.js', 'RESTful APIs', 'System De
 WHERE category = 'Backend & Architecture';
 
 UPDATE experience
-SET achievements = achievements[1:1]
-  || ARRAY['Owned system design for the platform''s NestJS-based microservices, defining service boundaries, data flow, and scalability strategy across staking, rewards, and licensing services.']
-  || achievements[2:array_length(achievements, 1)]
+SET
+  description = 'Web3-based staking and rewards platform built with React.js, NestJS, and MongoDB, supporting decentralized licensing, machine connectivity, and high-volume user activity.',
+  achievements = ARRAY['Architected and developed the core platform and admin dashboard using React.js and NestJS, supporting decentralized staking, rewards generation, and licence management.']
+    || ARRAY['Owned system design for the platform''s NestJS-based microservices, defining service boundaries, data flow, and scalability strategy across staking, rewards, and licensing services.']
+    || achievements[2:array_length(achievements, 1)]
 WHERE company = 'SoftBuilders Software Design LLC';
 
 UPDATE projects

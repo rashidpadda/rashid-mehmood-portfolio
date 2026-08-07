@@ -61,9 +61,9 @@ export const fallbackExperience: Experience[] = [
     location: 'Business Bay, Dubai, UAE',
     start_date: '01/2024',
     end_date: undefined,
-    description: 'Web3-based staking and rewards platform built with React.js, Node.js, and MongoDB, supporting decentralized licensing, machine connectivity, and high-volume user activity.',
+    description: 'Web3-based staking and rewards platform built with React.js, NestJS, and MongoDB, supporting decentralized licensing, machine connectivity, and high-volume user activity.',
     achievements: [
-      'Architected and developed the core platform and admin dashboard using React.js and Node.js, supporting decentralized staking, rewards generation, and licence management.',
+      'Architected and developed the core platform and admin dashboard using React.js and NestJS, supporting decentralized staking, rewards generation, and licence management.',
       "Owned system design for the platform's NestJS-based microservices, defining service boundaries, data flow, and scalability strategy across staking, rewards, and licensing services.",
       'Gained experience building enterprise asset-centric platforms involving equipment management, licensing, machine connectivity, and operational workflows.',
       'Designed and implemented RESTful APIs and microservices that manage assets, users, permissions, workflows, and system events, aligning with Maximo-style backend architectures.',
