@@ -29,7 +29,7 @@ export const fallbackSkills: Skill[] = [
   {
     id: 'backend',
     category: 'Backend & Architecture',
-    skills: ['Node.js', 'NestJS', 'Express.js', 'RESTful APIs', 'Microservices', 'API Gateway', 'Event-Driven Architecture', 'Redis', 'RabbitMQ', 'gRPC', 'RBAC', 'OAuth2', 'SSO', 'MongoDB', 'PostgreSQL'],
+    skills: ['Node.js', 'NestJS', 'Express.js', 'RESTful APIs', 'System Design', 'Microservices', 'API Gateway', 'Event-Driven Architecture', 'Redis', 'RabbitMQ', 'gRPC', 'RBAC', 'OAuth2', 'SSO', 'MongoDB', 'PostgreSQL'],
   },
   {
     id: 'blockchain',
@@ -64,6 +64,7 @@ export const fallbackExperience: Experience[] = [
     description: 'Web3-based staking and rewards platform built with React.js, Node.js, and MongoDB, supporting decentralized licensing, machine connectivity, and high-volume user activity.',
     achievements: [
       'Architected and developed the core platform and admin dashboard using React.js and Node.js, supporting decentralized staking, rewards generation, and licence management.',
+      "Owned system design for the platform's NestJS-based microservices, defining service boundaries, data flow, and scalability strategy across staking, rewards, and licensing services.",
       'Gained experience building enterprise asset-centric platforms involving equipment management, licensing, machine connectivity, and operational workflows.',
       'Designed and implemented RESTful APIs and microservices that manage assets, users, permissions, workflows, and system events, aligning with Maximo-style backend architectures.',
       'Designed and maintained a centralized API Gateway for routing, authentication, authorization, and rate limiting across distributed microservices.',
@@ -144,9 +145,10 @@ export const fallbackProjects: Project[] = [
     id: 'homnifi',
     name: 'Homnifi',
     description: 'Enterprise-grade Web3 and DeFi ecosystem delivering staking, rewards, licensing, and machine-integrated blockchain services.',
-    technologies: ['React.js', 'Node.js', 'MongoDB', 'Microservices', 'Redis', 'RabbitMQ'],
+    technologies: ['React.js', 'NestJS', 'MongoDB', 'Microservices', 'Redis', 'RabbitMQ'],
     highlights: [
       'Led end-to-end development of a scalable Full Stack architecture with a centralized API Gateway handling auth, routing, throttling, and service orchestration.',
+      "Owned system design for the platform — defining service boundaries, data flow, and scalability strategy across staking, rewards, and licensing microservices.",
       'Designed staking, rewards, and license-based incentive modules tightly integrated with blockchain smart contracts.',
       'Optimized backend performance for high user concurrency using Redis caching, RabbitMQ messaging, and batch processing.',
     ],
@@ -157,9 +159,10 @@ export const fallbackProjects: Project[] = [
     id: 'alfarm',
     name: 'AI Farm',
     description: 'Decentralized Web3 platform enabling wallet operations, staking, referrals, and asset resale through smart contracts.',
-    technologies: ['Node.js', 'PostgreSQL', 'Docker', 'Smart Contracts'],
+    technologies: ['NestJS', 'PostgreSQL', 'Docker', 'Smart Contracts'],
     highlights: [
-      'Designed and deployed scalable microservices to support wallet, staking, and reward workflows, including debit, credit, token swaps, and real-time balance updates.',
+      'Designed and deployed scalable microservices using NestJS to support wallet, staking, and reward workflows, including debit, credit, token swaps, and real-time balance updates.',
+      "Applied NestJS's modular, dependency-injection-based architecture to keep wallet, staking, and referral services independently testable and maintainable.",
       'Built referral-based incentive and buyback systems with smart contract integration for secondary marketplace reselling.',
     ],
     link: 'https://app.aifarm.network/auth/login',
