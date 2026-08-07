@@ -8,8 +8,8 @@
   --ink-soft: #475569;
   --ink-faint: #94a3b8;
   --line: #e2e8f0;
-  --accent: #2563eb;
-  --accent-soft: #dbeafe;
+  --accent: #7c3aed;
+  --accent-soft: #ede9fe;
   --accent-ink: #ffffff;
 }
 
@@ -38,8 +38,8 @@
     --ink-soft: #94a3b8;
     --ink-faint: #64748b;
     --line: #1e293b;
-    --accent: #60a5fa;
-    --accent-soft: rgba(96, 165, 250, 0.14);
+    --accent: #a78bfa;
+    --accent-soft: rgba(167, 139, 250, 0.14);
     --accent-ink: #0b0e14;
   }
 }
@@ -84,7 +84,7 @@
   }
 
   .glow-shadow {
-    box-shadow: 0 8px 30px -8px rgba(37, 99, 235, 0.35);
+    box-shadow: 0 8px 30px -8px rgba(124, 58, 237, 0.35);
   }
 
   .card {
@@ -97,7 +97,7 @@
 
   .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 40px -12px rgba(37, 99, 235, 0.25);
+    box-shadow: 0 16px 40px -12px rgba(124, 58, 237, 0.25);
     border-color: var(--accent);
   }
 
