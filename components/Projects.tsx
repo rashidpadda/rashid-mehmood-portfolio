@@ -18,9 +18,12 @@ export default function Projects({ projects }: ProjectsProps) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project) => (
-            <div key={project.id} className="card overflow-hidden">
-              <div className="h-1.5 bg-accent" />
+          {projects.map((project, i) => (
+            <div
+              key={project.id}
+              className={`card overflow-hidden ${i === 0 ? 'md:col-span-2' : ''}`}
+            >
+              <div className="h-1.5 gradient-brand" />
               <div className="p-7">
                 <div className="flex items-start justify-between gap-3 mb-2">
                   <h3 className="font-display text-lg font-bold text-ink">{project.name}</h3>

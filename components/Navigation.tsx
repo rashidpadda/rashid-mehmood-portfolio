@@ -42,15 +42,15 @@ export default function Navigation() {
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-bg/90 backdrop-blur-md shadow-sm border-b border-line' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <div className="flex items-center justify-between h-16">
-          <a href="#home" className="flex items-center gap-2 font-display text-xl font-extrabold text-ink">
-            <span className="w-8 h-8 rounded-lg gradient-brand flex items-center justify-center text-accent-ink text-sm">
+    <nav className="fixed top-3 sm:top-5 left-0 right-0 z-50 px-3 sm:px-6">
+      <div
+        className={`max-w-6xl mx-auto rounded-full transition-all duration-300 ${
+          isScrolled ? 'glass shadow-lg shadow-black/[0.03]' : 'glass'
+        }`}
+      >
+        <div className="flex items-center justify-between h-14 px-3 sm:px-4">
+          <a href="#home" className="flex items-center gap-2 font-display text-xl font-extrabold text-ink shrink-0">
+            <span className="w-8 h-8 rounded-xl gradient-brand flex items-center justify-center text-accent-ink text-sm glow-shadow">
               RM
             </span>
           </a>
@@ -74,17 +74,17 @@ export default function Navigation() {
             })}
           </div>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2">
             <a
               href="/resume.pdf"
               download
-              className="inline-flex px-5 py-2 rounded-full border-2 border-line text-ink text-sm font-semibold hover:border-accent hover:text-accent transition-colors"
+              className="inline-flex px-4 py-2 rounded-full border border-line text-ink text-sm font-semibold hover:border-accent hover:text-accent transition-colors"
             >
               Resume
             </a>
             <a
               href="#contact"
-              className="inline-flex px-5 py-2 rounded-full gradient-brand text-accent-ink text-sm font-semibold glow-shadow hover:opacity-90 transition-opacity"
+              className="inline-flex px-4 py-2 rounded-full gradient-brand text-accent-ink text-sm font-semibold glow-shadow hover:opacity-90 transition-opacity"
             >
               Hire me
             </a>
@@ -105,32 +105,32 @@ export default function Navigation() {
             </svg>
           </button>
         </div>
-      </div>
 
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-bg border-t border-line shadow-lg">
-          <div className="px-4 pt-2 pb-4 flex flex-col gap-1">
-            {navLinks.map((link) => (
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-line">
+            <div className="px-4 pt-2 pb-4 flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="px-3.5 py-2.5 rounded-lg text-ink-soft hover:bg-bg-soft hover:text-accent font-medium"
+                >
+                  {link.label}
+                </a>
+              ))}
               <a
-                key={link.href}
-                href={link.href}
+                href="/resume.pdf"
+                download
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="px-3.5 py-2.5 rounded-lg text-ink-soft hover:bg-bg-soft hover:text-accent font-medium"
               >
-                {link.label}
+                Resume
               </a>
-            ))}
-            <a
-              href="/resume.pdf"
-              download
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="px-3.5 py-2.5 rounded-lg text-ink-soft hover:bg-bg-soft hover:text-accent font-medium"
-            >
-              Resume
-            </a>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </nav>
   );
 }

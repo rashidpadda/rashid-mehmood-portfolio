@@ -51,6 +51,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
   }
 
   body {
@@ -76,21 +77,49 @@
 
 @layer components {
   .gradient-brand {
-    background: var(--accent);
+    background: linear-gradient(135deg, var(--accent) 0%, #ec4899 100%);
   }
 
   .gradient-text {
-    color: var(--accent);
+    background: linear-gradient(135deg, var(--accent) 0%, #ec4899 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 
   .glow-shadow {
     box-shadow: 0 8px 30px -8px rgba(124, 58, 237, 0.35);
   }
 
+  /* Frosted-glass surface used by cards, nav, and bento tiles */
+  .glass {
+    background: color-mix(in srgb, var(--surface) 72%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  }
+
+  /* Layered radial-gradient wash for hero/CTA backdrops */
+  .mesh-bg {
+    background-image:
+      radial-gradient(at 15% 15%, color-mix(in srgb, var(--accent) 40%, transparent) 0px, transparent 55%),
+      radial-gradient(at 85% 8%, rgba(236, 72, 153, 0.28) 0px, transparent 50%),
+      radial-gradient(at 90% 85%, rgba(56, 189, 248, 0.22) 0px, transparent 50%),
+      radial-gradient(at 10% 90%, color-mix(in srgb, var(--accent) 25%, transparent) 0px, transparent 50%);
+  }
+
+  /* Subtle dot texture layered over mesh backgrounds */
+  .dot-grid {
+    background-image: radial-gradient(color-mix(in srgb, var(--ink) 18%, transparent) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
   .card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 1rem;
+    background: color-mix(in srgb, var(--surface) 72%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+    border-radius: 1.5rem;
     box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }

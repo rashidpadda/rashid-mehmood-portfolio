@@ -6,7 +6,8 @@ interface ExperienceProps {
 
 export default function Experience({ experiences }: ExperienceProps) {
   return (
-    <section id="experience" className="py-24 px-6 sm:px-10 bg-bg-soft">
+    <section id="experience" className="py-24 px-6 sm:px-10 relative">
+      <div className="absolute inset-0 -z-10 bg-bg-soft dot-grid opacity-60" />
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-14">
           <span className="inline-block px-4 py-1.5 rounded-full bg-accent-soft text-accent text-sm font-semibold mb-4">
@@ -23,7 +24,7 @@ export default function Experience({ experiences }: ExperienceProps) {
               key={exp.id}
               className="card p-7 sm:p-8 relative overflow-hidden"
             >
-              <span className="absolute left-0 top-0 bottom-0 w-1.5 rounded-l-2xl bg-accent" />
+              <span className="absolute left-0 top-0 bottom-0 w-1.5 rounded-l-2xl gradient-brand" />
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-1">
                 <div>
                   <h3 className="font-display text-xl font-bold text-ink">{exp.title}</h3>
@@ -32,7 +33,7 @@ export default function Experience({ experiences }: ExperienceProps) {
                     {exp.location && <span className="text-ink-faint text-sm">{exp.location}</span>}
                   </div>
                 </div>
-                <span className="tabular font-mono text-xs px-3 py-1.5 rounded-full bg-bg-soft border border-line text-ink-faint whitespace-nowrap">
+                <span className="tabular font-mono text-xs px-3 py-1.5 rounded-full bg-accent-soft text-accent whitespace-nowrap">
                   {exp.start_date} – {exp.end_date || 'Present'}
                 </span>
               </div>

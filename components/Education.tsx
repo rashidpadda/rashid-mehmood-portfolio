@@ -26,7 +26,7 @@ export default function Education({ education }: EducationProps) {
                 {edu.location && <p className="text-ink-faint text-sm mt-0.5">{edu.location}</p>}
               </div>
               {edu.start_date && edu.end_date && (
-                <span className="tabular font-mono text-xs px-3 py-1.5 rounded-full bg-bg-soft border border-line text-ink-faint whitespace-nowrap self-start sm:self-center">
+                <span className="tabular font-mono text-xs px-3 py-1.5 rounded-full bg-accent-soft text-accent whitespace-nowrap self-start sm:self-center">
                   {edu.start_date} – {edu.end_date}
                 </span>
               )}

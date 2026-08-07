@@ -20,12 +20,8 @@ export default function Hero({ profile }: HeroProps) {
   const lastName = restName.join(' ');
 
   return (
-    <section id="home" className="relative overflow-hidden pt-32 pb-24 px-6 sm:px-10">
-      <div className="absolute inset-0 -z-10 bg-bg-soft">
-        <div className="blob absolute -top-24 -left-24 w-96 h-96 rounded-full bg-accent opacity-20 blur-3xl" />
-        <div className="blob absolute top-1/3 -right-24 w-[28rem] h-[28rem] rounded-full bg-accent opacity-15 blur-3xl" style={{ animationDelay: '3s' }} />
-        <div className="blob absolute bottom-0 left-1/3 w-80 h-80 rounded-full bg-accent opacity-10 blur-3xl" style={{ animationDelay: '6s' }} />
-      </div>
+    <section id="home" className="relative overflow-hidden pt-28 pb-24 px-6 sm:px-10">
+      <div className="absolute inset-0 -z-10 bg-bg-soft mesh-bg dot-grid" />
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-[auto_1fr] gap-14 items-center">
         <div className="reveal justify-self-center">
@@ -35,7 +31,7 @@ export default function Hero({ profile }: HeroProps) {
 
             <div
               className="relative w-full h-full rounded-[2rem] overflow-hidden glow-shadow ring-1 ring-white/10"
-              style={{ background: 'linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 55%, black) 100%)' }}
+              style={{ background: 'linear-gradient(135deg, var(--accent) 0%, #ec4899 100%)' }}
             >
               <div
                 className="absolute inset-0 opacity-[0.12]"
@@ -86,34 +82,6 @@ export default function Hero({ profile }: HeroProps) {
             gateways, and cloud-native architecture, with additional experience
             across mobile and Web3 systems.
           </p>
-
-          <div className="flex flex-wrap justify-center md:justify-start items-center gap-5 mb-8">
-            {techStack.map(({ Icon, label, color }) => (
-              <Icon
-                key={label}
-                title={label}
-                aria-label={label}
-                className="w-7 h-7 sm:w-8 sm:h-8 text-ink-faint opacity-80 hover:opacity-100 transition-opacity"
-                style={color !== 'currentColor' ? { color } : undefined}
-              />
-            ))}
-          </div>
-
-          <div className="flex flex-wrap justify-center md:justify-start items-center gap-3 text-sm text-ink-faint mb-10">
-            <span className="flex items-center gap-1.5">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              {profile.location}
-            </span>
-            <a href={`mailto:${profile.email}`} className="flex items-center gap-1.5 hover:text-accent transition-colors">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              {profile.email}
-            </a>
-          </div>
 
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-4">
             <a
@@ -168,44 +136,36 @@ export default function Hero({ profile }: HeroProps) {
         </div>
       </div>
 
-      <div className="reveal max-w-6xl mx-auto mt-16 rounded-3xl bg-ink px-8 py-10 sm:px-12 sm:py-12 grid sm:grid-cols-2 gap-10">
-        <div>
-          <h3 className="font-display text-lg font-bold text-accent mb-5">Contact</h3>
-          <div className="flex flex-col gap-4">
-            <a href={`mailto:${profile.email}`} className="flex items-center gap-3 text-bg hover:text-accent transition-colors">
-              <span className="w-9 h-9 rounded-full bg-bg/10 flex items-center justify-center shrink-0">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </span>
-              <span className="text-sm break-all">{profile.email}</span>
-            </a>
-            {profile.phone && (
-              <a href={`tel:${profile.phone}`} className="flex items-center gap-3 text-bg hover:text-accent transition-colors">
-                <span className="w-9 h-9 rounded-full bg-bg/10 flex items-center justify-center shrink-0">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </span>
-                <span className="text-sm">{profile.phone}</span>
-              </a>
-            )}
-          </div>
-        </div>
-
-        <div>
-          <h3 className="font-display text-lg font-bold text-accent mb-5">Skills</h3>
-          <div className="flex flex-wrap gap-3">
+      <div className="reveal max-w-6xl mx-auto mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+        <div className="card col-span-2 p-6 sm:p-7 flex flex-col justify-between">
+          <h3 className="font-display text-sm font-bold text-ink-faint uppercase tracking-wide mb-4">
+            Core stack
+          </h3>
+          <div className="flex flex-wrap items-center gap-3">
             {techStack.map(({ Icon, label, color }) => (
               <span
                 key={label}
                 title={label}
-                className="w-11 h-11 rounded-xl bg-bg flex items-center justify-center shrink-0"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-bg-soft border border-line flex items-center justify-center shrink-0"
               >
-                <Icon className="w-5 h-5" style={{ color: color !== 'currentColor' ? color : 'var(--ink)' }} />
+                <Icon className="w-5 h-5" style={color !== 'currentColor' ? { color } : { color: 'var(--ink)' }} />
               </span>
             ))}
           </div>
+        </div>
+
+        <div className="card p-6 sm:p-7 flex flex-col justify-between">
+          <h3 className="font-display text-sm font-bold text-ink-faint uppercase tracking-wide mb-4">
+            Experience
+          </h3>
+          <p className="font-display text-3xl sm:text-4xl font-extrabold gradient-text">6+ yrs</p>
+        </div>
+
+        <div className="card p-6 sm:p-7 flex flex-col justify-between">
+          <h3 className="font-display text-sm font-bold text-ink-faint uppercase tracking-wide mb-4">
+            Based in
+          </h3>
+          <p className="font-display text-lg font-bold text-ink">{profile.location}</p>
         </div>
       </div>
     </section>
