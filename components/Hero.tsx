@@ -31,7 +31,7 @@ export default function Hero({ profile }: HeroProps) {
 
             <div
               className="relative w-full h-full rounded-[2rem] overflow-hidden glow-shadow ring-1 ring-white/10"
-              style={{ background: 'linear-gradient(135deg, var(--accent) 0%, #ec4899 100%)' }}
+              style={{ background: 'linear-gradient(135deg, var(--accent) 0%, #4338ca 100%)' }}
             >
               <div
                 className="absolute inset-0 opacity-[0.12]"
