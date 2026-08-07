@@ -32,10 +32,33 @@ export default function Hero({ profile }: HeroProps) {
           <div className="relative w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72">
             <div className="absolute -top-8 -right-10 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full bg-accent-soft -z-10" />
             <div className="absolute -bottom-6 -left-8 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-accent opacity-15 -z-10" />
-            <div className="w-full h-full rounded-3xl gradient-brand flex items-center justify-center glow-shadow">
-              <span className="font-display font-extrabold text-accent-ink text-6xl sm:text-7xl lg:text-8xl">
-                RM
+
+            <div
+              className="relative w-full h-full rounded-[2rem] overflow-hidden glow-shadow ring-1 ring-white/10"
+              style={{ background: 'linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 55%, black) 100%)' }}
+            >
+              <div
+                className="absolute inset-0 opacity-[0.12]"
+                style={{
+                  backgroundImage:
+                    'linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)',
+                  backgroundSize: '22px 22px',
+                }}
+              />
+              <div className="absolute -top-12 -left-10 w-40 h-40 rounded-full bg-white/25 blur-3xl" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="font-display font-extrabold text-accent-ink text-7xl sm:text-8xl lg:text-9xl tracking-tight [text-shadow:0_2px_12px_rgba(0,0,0,0.15)]">
+                  RM
+                </span>
+              </div>
+            </div>
+
+            <div className="absolute -bottom-4 right-3 sm:-bottom-5 sm:right-4 flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface border border-line text-ink text-xs font-semibold shadow-lg whitespace-nowrap">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
+              Available for hire
             </div>
           </div>
         </div>
