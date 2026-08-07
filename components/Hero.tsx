@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { SiReact, SiNextdotjs, SiNodedotjs, SiNestjs, SiMongodb, SiPostgresql, SiEthereum } from 'react-icons/si';
 import { Profile } from '@/lib/supabase';
 
@@ -30,17 +29,14 @@ export default function Hero({ profile }: HeroProps) {
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-[auto_1fr] gap-14 items-center">
         <div className="reveal justify-self-center">
-          <div className="relative w-48 h-72 sm:w-60 sm:h-[21rem] lg:w-72 lg:h-[27rem]">
+          <div className="relative w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72">
             <div className="absolute -top-8 -right-10 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full bg-accent-soft -z-10" />
             <div className="absolute -bottom-6 -left-8 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-accent opacity-15 -z-10" />
-            <Image
-              src="/profile.png"
-              alt={profile.name}
-              fill
-              sizes="288px"
-              priority
-              className="rounded-3xl object-cover object-top"
-            />
+            <div className="w-full h-full rounded-3xl gradient-brand flex items-center justify-center glow-shadow">
+              <span className="font-display font-extrabold text-accent-ink text-6xl sm:text-7xl lg:text-8xl">
+                RM
+              </span>
+            </div>
           </div>
         </div>
 
