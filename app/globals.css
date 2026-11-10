@@ -17,6 +17,35 @@
   color-scheme: light;
 }
 
+[data-theme='dark'] {
+  --bg: #10131b;
+  --bg-soft: #171b26;
+  --surface: #1c2130;
+  --ink: #f4f6f8;
+  --ink-soft: #c5ccd6;
+  --ink-faint: #8e98a8;
+  --line: #31384a;
+  --accent: #c5cce0;
+  --accent-soft: #2a3144;
+  --accent-ink: #12151e;
+  --panel: #1c2130;
+  --panel-ink: #f4f6f8;
+  --on-panel: #c5ccd6;
+  color-scheme: dark;
+}
+
+.theme-icon-moon {
+  display: none;
+}
+
+[data-theme='dark'] .theme-icon-sun {
+  display: none;
+}
+
+[data-theme='dark'] .theme-icon-moon {
+  display: block;
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-bg-soft: var(--bg-soft);
@@ -51,6 +80,7 @@
     color: var(--ink);
     font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
     text-rendering: optimizeLegibility;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   a {

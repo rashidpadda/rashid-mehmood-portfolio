@@ -32,14 +32,15 @@ export default function Hero({ profile }: HeroProps) {
     <section id="home" className="relative overflow-hidden px-6 pt-28 pb-20 sm:px-10">
       <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[auto_1fr] lg:gap-12">
         <div className="reveal justify-self-center" style={{ animationDelay: '40ms' }}>
-          <div className="w-[260px] sm:w-[320px]">
+          <div className="w-[240px] sm:w-[280px]">
             <Image
-              src="/portrait-straight.png"
+              src="/portrait.png"
               alt="Rashid Mehmood"
-              width={844}
-              height={1126}
+              width={864}
+              height={1152}
               priority
-              className="h-auto w-full object-cover object-top"
+              unoptimized
+              className="h-auto w-full"
             />
           </div>
         </div>

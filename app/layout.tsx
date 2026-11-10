@@ -25,13 +25,18 @@ export const metadata: Metadata = {
   description: "Senior Full Stack Software Engineer with 7+ years building services and products. NestJS, Node.js, .NET, SQL Server, React, Next.js, and React Native.",
 };
 
+const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'){t='dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body
         className={`${instrument.variable} ${inter.variable} ${plexMono.variable} antialiased`}
       >
