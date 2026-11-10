@@ -42,30 +42,24 @@ export default function Navigation() {
   }, []);
 
   return (
-    <nav className="fixed top-3 sm:top-5 left-0 right-0 z-50 px-3 sm:px-6">
-      <div
-        className={`max-w-6xl mx-auto rounded-full transition-all duration-300 ${
-          isScrolled ? 'glass shadow-lg shadow-black/[0.03]' : 'glass'
-        }`}
-      >
-        <div className="flex items-center justify-between h-14 px-3 sm:px-4">
-          <a href="#home" className="flex items-center gap-2 font-display text-xl font-extrabold text-ink shrink-0">
-            <span className="w-8 h-8 rounded-xl gradient-brand flex items-center justify-center text-accent-ink text-sm glow-shadow">
-              RM
-            </span>
+    <nav className={`fixed inset-x-0 top-0 z-50 border-b bg-white/95 backdrop-blur-md transition-shadow ${isScrolled ? 'border-line shadow-sm' : 'border-transparent'}`}>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="flex h-16 items-center justify-between">
+          <a href="#home" className="shrink-0 whitespace-nowrap font-display text-base font-semibold tracking-tight text-ink" aria-label="Rashid Mehmood, home">
+            Rashid Mehmood
           </a>
 
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden items-center gap-0.5 md:flex">
             {navLinks.map((link) => {
               const isActive = activeHref === link.href;
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`px-3.5 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`whitespace-nowrap rounded-full px-2 py-1.5 text-sm font-medium transition-colors ${
                     isActive
-                      ? 'text-accent bg-accent-soft'
-                      : 'text-ink-soft hover:text-ink hover:bg-bg-soft'
+                      ? 'text-accent'
+                      : 'text-ink-soft hover:text-accent'
                   }`}
                 >
                   {link.label}
@@ -74,17 +68,17 @@ export default function Navigation() {
             })}
           </div>
 
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden shrink-0 items-center gap-2 md:flex">
             <a
               href="/resume.pdf"
               download
-              className="inline-flex px-4 py-2 rounded-full border border-line text-ink text-sm font-semibold hover:border-accent hover:text-accent transition-colors"
+              className="btn-ghost hidden px-3.5 py-2 text-sm lg:inline-flex"
             >
               Resume
             </a>
             <a
               href="#contact"
-              className="inline-flex px-4 py-2 rounded-full gradient-brand text-accent-ink text-sm font-semibold glow-shadow hover:opacity-90 transition-opacity"
+              className="btn-primary inline-flex whitespace-nowrap px-4 py-2 text-sm"
             >
               Hire me
             </a>
@@ -92,11 +86,11 @@ export default function Navigation() {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-ink"
+            className="rounded-lg p-2 text-ink md:hidden"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMobileMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -107,25 +101,37 @@ export default function Navigation() {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-line">
-            <div className="px-4 pt-2 pb-4 flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="px-3.5 py-2.5 rounded-lg text-ink-soft hover:bg-bg-soft hover:text-accent font-medium"
-                >
-                  {link.label}
-                </a>
-              ))}
+          <div className="border-t border-line md:hidden">
+            <div className="flex flex-col gap-1 px-3 pb-4 pt-2">
+              {navLinks.map((link) => {
+                const isActive = activeHref === link.href;
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`rounded-lg px-3.5 py-2.5 font-medium ${
+                      isActive ? 'text-accent' : 'text-ink-soft hover:text-accent'
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
               <a
                 href="/resume.pdf"
                 download
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="px-3.5 py-2.5 rounded-lg text-ink-soft hover:bg-bg-soft hover:text-accent font-medium"
+                className="rounded-lg px-3.5 py-2.5 font-medium text-ink-soft hover:bg-bg-soft hover:text-ink"
               >
                 Resume
+              </a>
+              <a
+                href="#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="btn-primary mt-1 px-3.5 py-2.5 text-center text-sm"
+              >
+                Hire me
               </a>
             </div>
           </div>

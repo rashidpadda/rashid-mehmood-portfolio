@@ -1,0 +1,43 @@
+'use client';
+
+import { useEffect, useRef, type CSSProperties, type ReactNode } from 'react';
+
+interface RevealProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}
+
+export default function Reveal({ children, className = '', delay = 0 }: RevealProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.classList.add('is-in');
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        el.classList.add('is-in');
+        observer.disconnect();
+      },
+      { threshold: 0.14, rootMargin: '0px 0px -8% 0px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const style: CSSProperties | undefined = delay > 0 ? { transitionDelay: `${delay}ms` } : undefined;
+
+  return (
+    <div ref={ref} className={`reveal-block ${className}`} style={style}>
+      {children}
+    </div>
+  );
+}

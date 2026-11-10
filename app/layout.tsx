@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Instrument_Sans, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const instrument = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["500", "600", "700"],
 });
 
 const inter = Inter({
@@ -22,7 +22,7 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: "Rashid Mehmood - Senior Full Stack Software Engineer",
-  description: "Senior Full Stack Software Engineer with 6+ years of experience in web, mobile, and blockchain applications. Expertise in React.js, Next.js, React Native, Node.js, NestJS, Web3, and IT infrastructure.",
+  description: "Senior Full Stack Software Engineer with 7+ years building services and products. NestJS, Node.js, .NET, SQL Server, React, Next.js, and React Native.",
 };
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${inter.variable} ${plexMono.variable} antialiased`}
+        className={`${instrument.variable} ${inter.variable} ${plexMono.variable} antialiased`}
       >
         {children}
       </body>

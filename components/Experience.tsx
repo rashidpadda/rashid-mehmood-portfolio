@@ -1,4 +1,6 @@
 import { Experience as ExperienceType } from '@/lib/supabase';
+import Reveal from '@/components/Reveal';
+import SectionHeading from '@/components/SectionHeading';
 
 interface ExperienceProps {
   experiences: ExperienceType[];
@@ -6,52 +8,42 @@ interface ExperienceProps {
 
 export default function Experience({ experiences }: ExperienceProps) {
   return (
-    <section id="experience" className="py-24 px-6 sm:px-10 relative">
-      <div className="absolute inset-0 -z-10 bg-bg-soft dot-grid opacity-60" />
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-14">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-soft text-accent text-sm font-semibold mb-4">
-            Experience
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-ink">
-            Where I&apos;ve worked
-          </h2>
-        </div>
+    <section id="experience" className="px-6 py-24 sm:px-10">
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <SectionHeading eyebrow="My Experience" title="Where I've worked" />
+        </Reveal>
 
-        <div className="flex flex-col gap-6">
-          {experiences.map((exp) => (
-            <div
-              key={exp.id}
-              className="card p-7 sm:p-8 relative overflow-hidden"
-            >
-              <span className="absolute left-0 top-0 bottom-0 w-1.5 rounded-l-2xl gradient-brand" />
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-1">
-                <div>
-                  <h3 className="font-display text-xl font-bold text-ink">{exp.title}</h3>
-                  <div className="flex flex-wrap items-baseline gap-x-3 mt-1">
-                    <span className="text-accent font-semibold">{exp.company}</span>
-                    {exp.location && <span className="text-ink-faint text-sm">{exp.location}</span>}
+        <div className="grid gap-5 md:grid-cols-2">
+          {experiences.map((exp, i) => (
+            <Reveal key={exp.id} className={i === 0 ? 'md:col-span-2' : undefined} delay={Math.min(i, 4) * 60}>
+              <article className="card h-full p-7 sm:p-8">
+                <div className="mb-1">
+                  <div className="flex items-start justify-between gap-4">
+                    <p className="text-sm font-semibold text-accent">{exp.company}</p>
+                    <span className="tabular shrink-0 whitespace-nowrap text-sm font-medium text-ink-faint">
+                      {exp.start_date} – {exp.end_date || 'Present'}
+                    </span>
                   </div>
+                  <h3 className="mt-1 font-display text-xl font-semibold tracking-tight text-ink">{exp.title}</h3>
+                  {exp.location && <p className="mt-1 text-sm text-ink-faint">{exp.location}</p>}
                 </div>
-                <span className="tabular font-mono text-xs px-3 py-1.5 rounded-full bg-accent-soft text-accent whitespace-nowrap">
-                  {exp.start_date} – {exp.end_date || 'Present'}
-                </span>
-              </div>
 
-              {exp.description && (
-                <p className="text-ink-soft text-sm italic my-4 leading-relaxed">{exp.description}</p>
-              )}
+                {exp.description && (
+                  <p className="my-4 text-sm leading-relaxed text-ink-soft">{exp.description}</p>
+                )}
 
-              {exp.achievements && exp.achievements.length > 0 && (
-                <ul className="bullet-list space-y-2.5 mt-4">
-                  {exp.achievements.map((achievement, idx) => (
-                    <li key={idx} className="text-ink text-[15px] leading-relaxed">
-                      {achievement}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+                {exp.achievements && exp.achievements.length > 0 && (
+                  <ul className="bullet-list mt-4 space-y-2.5">
+                    {exp.achievements.map((achievement, idx) => (
+                      <li key={idx} className="text-[15px] leading-relaxed text-ink-soft">
+                        {achievement}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>

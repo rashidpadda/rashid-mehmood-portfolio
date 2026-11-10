@@ -81,8 +81,26 @@ export async function getProfile(): Promise<Profile | null> {
   return data ?? fallbackProfile;
 }
 
+const skillCategoryOrder = [
+  'Backend & Architecture',
+  'Frontend Development',
+  'Blockchain & Web3',
+  'Integrations & DevOps',
+  'AI',
+  'IT Infrastructure & Networking',
+  'Practices',
+];
+
+function sortSkills(skills: Skill[]): Skill[] {
+  return [...skills].sort((a, b) => {
+    const ai = skillCategoryOrder.indexOf(a.category);
+    const bi = skillCategoryOrder.indexOf(b.category);
+    return (ai === -1 ? skillCategoryOrder.length : ai) - (bi === -1 ? skillCategoryOrder.length : bi);
+  });
+}
+
 export async function getSkills(): Promise<Skill[]> {
-  if (!supabase) return fallbackSkills;
+  if (!supabase) return sortSkills(fallbackSkills);
 
   const { data, error } = await supabase
     .from('skills')
@@ -91,10 +109,10 @@ export async function getSkills(): Promise<Skill[]> {
 
   if (error) {
     console.error('Error fetching skills:', error);
-    return fallbackSkills;
+    return sortSkills(fallbackSkills);
   }
 
-  return data && data.length > 0 ? data : fallbackSkills;
+  return data && data.length > 0 ? sortSkills(data) : sortSkills(fallbackSkills);
 }
 
 export async function getExperience(): Promise<Experience[]> {

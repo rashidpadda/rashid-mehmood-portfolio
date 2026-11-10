@@ -1,11 +1,13 @@
 import { Profile } from '@/lib/supabase';
+import Reveal from '@/components/Reveal';
+import SectionHeading from '@/components/SectionHeading';
 
 interface AboutProps {
   profile: Profile;
 }
 
 const facts = [
-  { label: 'Experience', value: '6+ Years' },
+  { label: 'Experience', value: '7+ Years' },
   { label: 'Focus', value: 'Full-Stack & Web3' },
   { label: 'Team style', value: 'Agile / Scrum' },
   { label: 'Availability', value: 'Remote & Relocation Worldwide' },
@@ -18,37 +20,34 @@ export default function About({ profile }: AboutProps) {
   const rest = splitAt > -1 ? summary.slice(splitAt + 2) : '';
 
   return (
-    <section id="about" className="py-24 px-6 sm:px-10">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-14">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-soft text-accent text-sm font-semibold mb-4">
-            About Me
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-ink">
-            The short version
-          </h2>
-        </div>
+    <section id="about" className="bg-surface px-6 py-24 sm:px-10">
+      <div className="mx-auto max-w-5xl">
+        <Reveal>
+          <SectionHeading eyebrow="About Me" title="The short version" />
+        </Reveal>
 
-        <div className="grid lg:grid-cols-[1.6fr_1fr] gap-10 lg:gap-16 items-start">
-          <div className="max-w-[62ch]">
-            <p className="font-display text-xl sm:text-2xl font-semibold text-ink leading-snug mb-5">
+        <div className="grid items-start gap-10 lg:grid-cols-[1.6fr_1fr] lg:gap-16">
+          <Reveal className="max-w-[62ch]" delay={80}>
+            <p className="mb-5 font-display text-xl font-medium leading-snug tracking-tight text-ink sm:text-2xl">
               {lead}
             </p>
             {rest && (
-              <p className="text-base sm:text-lg text-ink-soft leading-relaxed">
+              <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
                 {rest}
               </p>
             )}
-          </div>
+          </Reveal>
 
+          <Reveal delay={160}>
           <div className="card divide-y divide-line">
             {facts.map((fact) => (
-              <div key={fact.label} className="p-5 sm:p-6 flex items-center justify-between gap-6">
-                <span className="text-sm text-ink-faint shrink-0">{fact.label}</span>
-                <span className="font-display font-bold text-ink text-right">{fact.value}</span>
+              <div key={fact.label} className="flex items-center justify-between gap-6 p-5 sm:px-6">
+                <span className="shrink-0 text-sm text-ink-faint">{fact.label}</span>
+                <span className="text-right font-display text-sm font-semibold text-ink">{fact.value}</span>
               </div>
             ))}
           </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -2,15 +2,19 @@
 
 :root {
   --bg: #ffffff;
-  --bg-soft: #f8fafc;
+  --bg-soft: #f4f6f8;
   --surface: #ffffff;
-  --ink: #0f172a;
-  --ink-soft: #475569;
-  --ink-faint: #94a3b8;
-  --line: #e2e8f0;
-  --accent: #7c3aed;
-  --accent-soft: #ede9fe;
+  --ink: #1c2430;
+  --ink-soft: #5c6775;
+  --ink-faint: #8b95a3;
+  --line: #e4e7ee;
+  --accent: #282d45;
+  --accent-soft: #e8ebf3;
   --accent-ink: #ffffff;
+  --panel: #ffffff;
+  --panel-ink: #1c2430;
+  --on-panel: #5c6775;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -24,24 +28,12 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-accent-ink: var(--accent-ink);
-  --font-display: var(--font-poppins);
+  --color-panel: var(--panel);
+  --color-panel-ink: var(--panel-ink);
+  --color-on-panel: var(--on-panel);
+  --font-display: var(--font-instrument);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-plex-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b0e14;
-    --bg-soft: #11151d;
-    --surface: #141926;
-    --ink: #f1f5f9;
-    --ink-soft: #94a3b8;
-    --ink-faint: #64748b;
-    --line: #1e293b;
-    --accent: #a78bfa;
-    --accent-soft: rgba(167, 139, 250, 0.14);
-    --accent-ink: #0b0e14;
-  }
 }
 
 @layer base {
@@ -58,6 +50,7 @@
     background: var(--bg);
     color: var(--ink);
     font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    text-rendering: optimizeLegibility;
   }
 
   a {
@@ -76,58 +69,43 @@
 }
 
 @layer components {
-  .gradient-brand {
-    background: linear-gradient(135deg, var(--accent) 0%, #4338ca 100%);
-  }
-
-  .gradient-text {
-    background: linear-gradient(135deg, var(--accent) 0%, #4338ca 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-
-  .glow-shadow {
-    box-shadow: 0 8px 30px -8px rgba(124, 58, 237, 0.35);
-  }
-
-  /* Frosted-glass surface used by cards, nav, and bento tiles */
-  .glass {
-    background: color-mix(in srgb, var(--surface) 72%, transparent);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-  }
-
-  /* Layered radial-gradient wash for hero/CTA backdrops */
-  .mesh-bg {
-    background-image:
-      radial-gradient(at 15% 15%, color-mix(in srgb, var(--accent) 35%, transparent) 0px, transparent 55%),
-      radial-gradient(at 85% 10%, rgba(67, 56, 202, 0.20) 0px, transparent 50%),
-      radial-gradient(at 90% 85%, rgba(67, 56, 202, 0.14) 0px, transparent 50%),
-      radial-gradient(at 10% 90%, color-mix(in srgb, var(--accent) 18%, transparent) 0px, transparent 50%);
-  }
-
-  /* Subtle dot texture layered over mesh backgrounds */
-  .dot-grid {
-    background-image: radial-gradient(color-mix(in srgb, var(--ink) 18%, transparent) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
   .card {
-    background: color-mix(in srgb, var(--surface) 72%, transparent);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-    border-radius: 1.5rem;
-    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 30px -22px rgba(28, 36, 48, 0.45);
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
 
   .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px -12px rgba(124, 58, 237, 0.25);
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+    box-shadow: 0 16px 34px -26px rgba(40, 45, 69, 0.55);
+  }
+
+  .btn-primary {
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    transition: filter 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(0.95);
+  }
+
+  .btn-ghost {
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    font-weight: 600;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-ghost:hover {
     border-color: var(--accent);
+    color: var(--accent);
   }
 
   .tabular {
@@ -142,34 +120,57 @@
 
   .bullet-list li {
     position: relative;
-    padding-left: 20px;
+    padding-left: 18px;
   }
 
   .bullet-list li::before {
     content: "";
     position: absolute;
-    left: 2px;
+    left: 0;
     top: 0.65em;
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 999px;
     background: var(--accent);
   }
 }
 
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(20px, -30px) scale(1.05); }
-}
-
 @keyframes reveal {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: none; }
 }
 
+@keyframes hero-glow {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes rule-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.reveal-block {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-block.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.section-rule {
+  transform-origin: center;
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .reveal { animation: reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .blob { animation: float 14s ease-in-out infinite; }
+  .reveal { animation: reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .hero-glow { animation: hero-glow 12s ease-in-out infinite; }
+  .reveal-block.is-in .section-rule { animation: rule-draw 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -178,5 +179,10 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .reveal-block {
+    opacity: 1;
+    transform: none;
   }
 }
