@@ -4,19 +4,16 @@ import { useState, useEffect } from 'react';
 import ThemeToggle from '@/components/ThemeToggle';
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#education', label: 'Education' },
+  { href: '#work', label: 'Work' },
+  { href: '#practice', label: 'Practice' },
+  { href: '#background', label: 'Background' },
   { href: '#contact', label: 'Contact' },
 ];
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeHref, setActiveHref] = useState('#home');
+  const [activeHref, setActiveHref] = useState('#work');
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -67,11 +64,8 @@ export default function Navigation() {
 
           <div className="flex shrink-0 items-center gap-2">
             <ThemeToggle />
-            <a href="/resume.pdf" download className="btn-ghost hidden px-3.5 py-2 text-sm lg:inline-flex">
-              Resume
-            </a>
             <a href="#contact" className="btn-primary hidden whitespace-nowrap px-4 py-2 text-sm md:inline-flex">
-              Hire me
+              Let&apos;s talk
             </a>
             <button
               type="button"
@@ -108,19 +102,11 @@ export default function Navigation() {
                 );
               })}
               <a
-                href="/resume.pdf"
-                download
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="rounded-lg px-3.5 py-2.5 font-medium text-ink-soft hover:bg-bg-soft hover:text-ink"
-              >
-                Resume
-              </a>
-              <a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="btn-primary mt-1 px-3.5 py-2.5 text-center text-sm"
               >
-                Hire me
+                Let&apos;s talk
               </a>
             </div>
           </div>

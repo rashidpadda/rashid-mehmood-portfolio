@@ -17,7 +17,7 @@ export const fallbackProfile: Profile = {
   linkedin: 'linkedin.com/in/rashid-mehmood-522411190',
   github: 'github.com/rashidpadda',
   summary:
-    'Senior Full Stack Software Engineer with 7+ years of experience designing and building scalable enterprise applications, high-volume data systems, and integrated platforms for global markets. Strong expertise in Node.js, NestJS, React.js, Next.js, React Native, and TypeScript, with hands-on experience in microservices, RESTful APIs, API gateways, event-driven systems, and real-time processing. Experienced in Web3, DeFi, NFT platforms, and smart contract integrations, plus AI-assisted recruitment products and IT infrastructure. Currently remote with Ibanera, a US digital bank. Comfortable working with distributed, cross-functional, and international teams in Agile/Scrum environments.',
+    'I build the product a person uses and the service behind it. Right now that is Ibanera: accounts, checkout, crypto purchase, and the admin desk. Before that, staking platforms, a property marketplace, an NFT exchange, and recruitment software.',
 };
 
 export const fallbackSkills: Skill[] = [
@@ -67,7 +67,7 @@ export const fallbackExperience: Experience[] = [
     start_date: '02/2026',
     end_date: undefined,
     description:
-      'Full-stack engineering for Ibanera, a US digital bank covering cards, payments, accounts, and crypto.',
+      'Accounts, checkout, crypto purchase, and the admin desk behind them.',
     achievements: [
       'Built the Next.js customer portal for accounts, cards, crypto and stablecoin wallets, transfers, approvals, and onboarding, with Redux and SignalR keeping account and verification state in sync.',
       'Developed the Peptiva checkout widget as an embeddable Next.js payment flow: email and phone verification, shipping, card payment, Apple Pay, and Google Pay.',
@@ -83,8 +83,8 @@ export const fallbackExperience: Experience[] = [
     company: 'SoftBuilders Software Design LLC',
     location: 'Business Bay, Dubai, UAE',
     start_date: '01/2024',
-    end_date: undefined,
-    description: 'Web3-based staking and rewards platform built with React.js, NestJS, and MongoDB, supporting decentralized licensing, machine connectivity, and high-volume user activity.',
+    end_date: '02/2026',
+    description: 'Staking, rewards, and licensing, and the services those products share.',
     achievements: [
       'Built the React.js and NestJS platform and admin dashboard for decentralized staking, rewards, licence management, and machine connectivity.',
       'Designed the NestJS services, REST APIs, and API gateway for routing, authentication, authorization, and rate limiting across staking, rewards, and licensing.',
@@ -101,7 +101,7 @@ export const fallbackExperience: Experience[] = [
     location: 'Abu Dhabi, UAE',
     start_date: '12/2023',
     end_date: '01/2024',
-    description: 'Enterprise-scale proptech platform supporting property sales, rentals, and exchanges across 10+ international markets.',
+    description: 'Property sales, rentals, and exchanges, on the web and on mobile.',
     achievements: [
       'Built the React Native app end to end, including core screens, navigation, and API integration.',
       'Shipped the Next.js frontend with SSR, SEO, dynamic routing, and advanced search for property listings.',
@@ -118,7 +118,7 @@ export const fallbackExperience: Experience[] = [
     location: 'Lahore, Pakistan',
     start_date: '02/2021',
     end_date: '2023',
-    description: 'NFT marketplace and Web3 dashboard managing 10,000+ users and 50,000+ blockchain transactions per month.',
+    description: 'An NFT marketplace, from the contract layer through card checkout.',
     achievements: [
       'Built browsing, trading, and wallet features in the React Native app for the Virtua NFT marketplace.',
       'Integrated Ethereum smart contracts with a Node.js backend and Web3.js. Transaction volume rose 40% and failures fell 30%.',
@@ -134,7 +134,7 @@ export const fallbackExperience: Experience[] = [
     location: 'Lahore, Pakistan',
     start_date: '04/2019',
     end_date: '2021',
-    description: 'AI-driven recruitment product that automated candidate screening and interview scheduling.',
+    description: 'Screening candidates and booking their interviews.',
     achievements: [
       'Built the React and Node.js product for AI-assisted candidate screening, interview scheduling, and candidate workflows, with Redux for application state.',
       'Implemented real-time chat and notifications with WebSockets and SignalR, reducing response time by 60%.',
@@ -146,54 +146,48 @@ export const fallbackExperience: Experience[] = [
 export const fallbackProjects: Project[] = [
   {
     id: 'ibanera-customer',
-    name: 'Ibanera Customer Portal',
+    name: 'Customer portal',
     description:
-      'Customer portal for Ibanera, a US digital bank, kept in sync with account, card, wallet, and verification services.',
-    technologies: ['SignalR', 'Jumio', 'Next.js', 'TypeScript', 'Redux'],
+      'A customer signs in, finishes an identity check, and then sees accounts, cards, wallets, and transfers.',
+    technologies: ['Next.js', 'TypeScript', 'Redux', 'SignalR', 'Jumio'],
     highlights: [
-      'Connected the portal to account, card, funding, and crypto services, including pay-in, move money, card lifecycle, and transaction history.',
-      'Wired Jumio into sign-in and onboarding so unverified customers finish verification before they use the portal.',
-      'Kept account and verification state in sync through Redux and SignalR updates from the backend.',
+      'I built the Next.js portal. Redux keeps the account, and SignalR updates it when verification or a balance changes on the server. Jumio sits in sign-in, so that check finishes before the rest of the portal opens.',
     ],
-    link: undefined,
+    link: 'https://customer.ibanera.com/',
     order_index: 1,
   },
   {
-    id: 'peptiva',
-    name: 'Peptiva Checkout Widget',
+    id: 'quickbuy',
+    name: 'QuickBuy',
     description:
-      'Embeddable checkout widget and widget API for card and wallet payments, with merchant branding and identity verification.',
-    technologies: ['SignalR', 'Jumio', 'Apple Pay', 'Google Pay', 'Next.js', 'TypeScript'],
+      'A buyer picks a crypto asset, signs in, and pays inside a widget. The .NET API checks the order, the identity status, and the exchange rate.',
+    technologies: ['React', 'Vite', 'Redux', '.NET', 'SignalR', 'Jumio'],
     highlights: [
-      'Integrated Jumio through the widget API, including desktop verification and SignalR updates while a manual review is open.',
-      'Built the checkout flow for email and phone verification, shipping, identity, card payment, and a signed embed for merchant sites.',
-      'Added Apple Pay and Google Pay so express checkout appears only when the currency and merchant allow it.',
+      'I built the React and Vite widget, including Apple Pay and Google Pay, and worked on the API it calls.',
     ],
-    link: undefined,
+    link: 'https://portl.ibanera.com/',
     order_index: 2,
   },
   {
-    id: 'quickbuy',
-    name: 'QuickBuy Portal',
+    id: 'ibanera-admin',
+    name: 'Ibanera Admin',
     description:
-      'React widget and .NET API for buying crypto, with sign-in, identity checks, and live order status.',
-    technologies: ['.NET', 'SignalR', 'Jumio', 'React', 'Vite', 'Redux'],
+      'The desk where staff review customers, approvals, and transactions that have been frozen.',
+    technologies: ['React', 'Redux', 'AG Grid', 'SQL Server', 'Jumio'],
     highlights: [
-      'Worked on the .NET widget API for validation, verification status, currency exchange, and order lookup.',
-      'Built the QuickBuy flow for sign-in, asset selection, identity checks, and checkout, including Apple Pay and Google Pay.',
+      'I extended the React admin for those queues, and the SQL Server procedures that store Jumio results, card status changes, and QuickBuy sign-in checks.',
     ],
-    link: undefined,
+    link: 'https://admin.ibanera.com/',
     order_index: 3,
   },
   {
-    id: 'ibanera-admin',
-    name: 'Admin Panel & Platform Database',
+    id: 'peptiva',
+    name: 'Peptiva checkout',
     description:
-      'Internal admin tools and the SQL Server database behind customer review, approvals, cards, and Jumio verification.',
-    technologies: ['SQL Server', 'Jumio', 'React', 'Redux', 'AG Grid'],
+      'Checkout a merchant can place on their own site. The buyer confirms an email and a phone number, adds shipping, and pays by card, Apple Pay, or Google Pay.',
+    technologies: ['Next.js', 'TypeScript', 'SignalR', 'Jumio', 'Apple Pay', 'Google Pay'],
     highlights: [
-      'Maintained stored procedures for Jumio verification updates, card status changes, and QuickBuy user checks.',
-      'Extended the admin panel for customer records, approval queues, and frozen-transaction review.',
+      'The widget and its API share one verification path. Jumio can stay open during a manual review, and SignalR tells the widget when that review moves.',
     ],
     link: undefined,
     order_index: 4,
@@ -201,77 +195,91 @@ export const fallbackProjects: Project[] = [
   {
     id: 'homnifi',
     name: 'Homnifi',
-    description: 'Enterprise-grade Web3 and DeFi ecosystem delivering staking, rewards, licensing, and machine-integrated blockchain services.',
-    technologies: ['NestJS', 'MongoDB', 'Redis', 'RabbitMQ', 'Microservices', 'React.js'],
-    highlights: [
-      'Led end-to-end development of a scalable Full Stack architecture with a centralized API Gateway handling auth, routing, throttling, and service orchestration.',
-      "Owned system design for the platform — defining service boundaries, data flow, and scalability strategy across staking, rewards, and licensing microservices.",
-      'Designed staking, rewards, and license-based incentive modules tightly integrated with blockchain smart contracts.',
-      'Optimized backend performance for high user concurrency using Redis caching, RabbitMQ messaging, and batch processing.',
-    ],
+    description:
+      'Staking, rewards, and licensing for connected machines. I designed the NestJS services and the API gateway, with Redis and RabbitMQ on the heavy paths.',
+    technologies: ['NestJS', 'MongoDB', 'Redis', 'RabbitMQ', 'React.js'],
+    highlights: [],
     link: 'https://homnifi.com',
     order_index: 5,
   },
   {
     id: 'alfarm',
     name: 'AI Farm',
-    description: 'Decentralized Web3 platform enabling wallet operations, staking, referrals, and asset resale through smart contracts.',
+    description:
+      'Wallets, staking, referrals, and resale. NestJS services cover balances, swaps, and the buyback path.',
     technologies: ['NestJS', 'PostgreSQL', 'Docker', 'Smart Contracts'],
-    highlights: [
-      'Designed and deployed scalable microservices using NestJS to support wallet, staking, and reward workflows, including debit, credit, token swaps, and real-time balance updates.',
-      "Applied NestJS's modular, dependency-injection-based architecture to keep wallet, staking, and referral services independently testable and maintainable.",
-      'Built referral-based incentive and buyback systems with smart contract integration for secondary marketplace reselling.',
-    ],
+    highlights: [],
     link: 'https://app.aifarm.network/auth/login',
     order_index: 6,
   },
   {
     id: 'aqarydash',
-    name: 'Aqary Dashboard',
-    description: 'Large-scale proptech platform supporting property sales, rentals, financing, and user management across global markets.',
-    technologies: ['Node.js', 'Next.js', 'SSR', 'SEO'],
-    highlights: [
-      'Designed Node.js REST APIs for listings, users, search, and transactions, shared by the web app and the mobile app.',
-      'Built the Next.js frontend with SSR, SEO, dynamic routing, and advanced search, and cut load time with code splitting and lazy loading.',
-    ],
+    name: 'Aqary',
+    description:
+      'Listings for sales, rentals, and exchanges. One Node.js API serves the Next.js site and the React Native app. Splitting and lazy loading cut page load by about 40% and made rendering about twice as fast.',
+    technologies: ['Node.js', 'Next.js', 'React Native'],
+    highlights: [],
     link: 'https://aqaryaid.com/en',
     order_index: 7,
   },
   {
     id: 'virtua',
-    name: 'Virtua Marketplace',
-    description: 'NFT marketplace and digital asset trading platform supporting high-volume blockchain transactions.',
+    name: 'Virtua',
+    description:
+      'An NFT marketplace for browsing, trading, and wallets. Node.js and Web3.js handle ownership and trades, and Stripe takes the card payment. Transaction volume rose about 40%, and failures fell about 30%.',
     technologies: ['Node.js', 'Web3.js', 'Stripe', 'React.js'],
-    highlights: [
-      'Integrated Ethereum smart contracts with the Node.js backend and Web3.js for ownership and trading.',
-      'Added Stripe for fiat-to-crypto checkout and tuned the service for peak NFT launch traffic.',
-    ],
+    highlights: [],
     link: 'https://marketplace.virtua.com',
     order_index: 8,
   },
   {
     id: 'ofish',
-    name: 'OFish — CRM Admin & Accounts Portal',
-    description: 'CRM platform managing end-users, business users, IoT device registrations, and company profiles.',
-    technologies: ['Node.js', 'React Native', 'React.js', 'IoT'],
-    highlights: [
-      'Built Node.js CRM modules for role-based access, company profiles, and multi-organization IoT device registration.',
-      'Shipped the React Native app for end-user IoT device control.',
-    ],
+    name: 'OFish',
+    description:
+      'A CRM for companies registering IoT devices. Node.js covers roles and company profiles. The React Native app is how a person controls a device.',
+    technologies: ['Node.js', 'React Native', 'React.js'],
+    highlights: [],
     link: undefined,
     order_index: 9,
   },
   {
     id: 'intvue',
-    name: 'IntVue — Automated Recruitment Software',
-    description: 'AI-driven recruitment platform automating candidate screening and interview scheduling.',
-    technologies: ['Node.js', 'SignalR', 'WebSockets', 'React.js', 'AI workflows'],
-    highlights: [
-      'Built Node.js APIs and the React client for AI-assisted screening, interview booking, and candidate handoff.',
-      'Added real-time chat with WebSockets and SignalR.',
-    ],
+    name: 'IntVue',
+    description:
+      'Software that screens candidates and books interviews. I built the Node.js API and the React client. Chat runs on WebSockets and SignalR.',
+    technologies: ['Node.js', 'React.js', 'WebSockets', 'SignalR'],
+    highlights: [],
     link: 'https://intvue.com/',
     order_index: 10,
+  },
+  {
+    id: 'erp',
+    name: 'ERP',
+    description:
+      'One workspace for a company\'s operations, from HR and finance through manufacturing and logistics. People sign in with an employee ID or a passkey.',
+    technologies: [],
+    highlights: [
+      'Human Resources — Attendance, Leave, Onboarding',
+      'PPM — Gantt, Task Board, Milestones',
+      'Procurement — MR, RFQ, PO, GRN',
+      'Inventory & Store — Stock, Transfers, Barcode',
+      'Payroll — Salary, WPS, Tax Slips',
+      'Finance GL — Journal, Chart of Accounts',
+      'Finance AP — Supplier Invoices, Payments',
+      'Finance AR — Customer Invoices, Receipts',
+      'Estimation — BOQ, Quotations, AI Validation',
+      'IT Management — Assets, Tickets, RDP Access',
+      'Transport — Fleet, Trips, Drivers',
+      'Geofencing — Site Check-in, Location Rules',
+      'Manufacturing — Costing, Lots, Fabrication',
+      'Workflow & Approvals — Digital Sign-off, Escalations',
+      'Documentation — Drawings, Submittals, Specs',
+      'Analytics — KPIs, Dashboards, Reports',
+      'Barcode / QR — Asset & Inventory Scanning',
+      'Fixed Assets — Depreciation, Tracking',
+    ],
+    link: 'https://qios.ae/login',
+    order_index: 11,
   },
 ];
 
